@@ -29,4 +29,6 @@ def sign_in():
     if not existing_user or not hashed_pass:
         return jsonify(message="Invalid email or password"), 401
 
-    #return jsonify(message="User sign in successful", user=jsonify(id=existing_user.id, email=existing_user.email, first_name=existing_user.first_name, last_name=existing_user.last_name)), 200
+    user_data = { "id": existing_user.id, "email": existing_user.email, "first_name": existing_user.first_name, "last_name": existing_user.last_name }
+
+    return jsonify(message="User sign in successful", user=user_data), 200
