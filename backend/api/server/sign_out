@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+"""Index"""
+from flask import request, jsonify
+from api.server.auth import app_auth
+from models.user import User
+from models import storage
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import unset_jwt_cookies
+
+@app_auth.route('/sign_out/', methods=['POST'], strict_slashes=False)
+def sign_out():
+    """Sign Out"""
+    response = jsonify(message="Successfully Signed Out")
+    unset_jwt_cookies(response)
+    return response
+

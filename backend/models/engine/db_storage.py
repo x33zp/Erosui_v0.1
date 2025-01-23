@@ -11,6 +11,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 import models
 
+
 class DBStorage:
     """Class that serializes instances to a JSON file and
     deserializes JSON file to instances
@@ -23,7 +24,7 @@ class DBStorage:
         """
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
                                       .format(os.getenv('HBNB_MYSQL_USER'),
-                                              os.getenv('HBNB_MYSQL_PWD'),
+                                              os.environ.get('HBNB_MYSQL_PWD'),
                                               os.getenv('HBNB_MYSQL_HOST'),
                                               os.getenv('HBNB_MYSQL_DB'),
                                               pool_pre_ping=True))
